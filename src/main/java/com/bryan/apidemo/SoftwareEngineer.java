@@ -1,9 +1,15 @@
 package com.bryan.apidemo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class SoftwareEngineer {
+
+    @Id
     private Integer Id;
     private String name;
     private String techStack;
