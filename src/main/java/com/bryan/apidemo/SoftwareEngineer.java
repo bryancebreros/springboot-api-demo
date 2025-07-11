@@ -1,9 +1,6 @@
 package com.bryan.apidemo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +13,23 @@ public class SoftwareEngineer {
     private Integer Id;
     private String name;
     private String techStack;
+    @Column(columnDefinition = "TEXT")
+    private String learningPathRecommendation;
+
+    public SoftwareEngineer(String learningPathRecommendation) {
+        this.learningPathRecommendation = learningPathRecommendation;
+    }
+
+
+    public String getLearningPathRecommendation() {
+        return learningPathRecommendation;
+    }
+
+    public void setLearningPathRecommendation(String learningPathRecommendation) {
+        this.learningPathRecommendation = learningPathRecommendation;
+    }
+
+
 
     public SoftwareEngineer(){}
 
@@ -51,15 +65,7 @@ public class SoftwareEngineer {
         Id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        SoftwareEngineer that = (SoftwareEngineer) o;
-        return Objects.equals(Id, that.Id) && Objects.equals(name, that.name) && Objects.equals(techStack, that.techStack);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(Id, name, techStack);
+    public SoftwareEngineer(Integer id) {
+        Id = id;
     }
 }
