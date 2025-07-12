@@ -16,6 +16,10 @@ public class SoftwareEngineerService {
         this.aiService = aiService;
     }
 
+    public static List<SoftwareEngineer> getSoftwareEngineerById(Integer id) {
+        return SoftwareEngineerRepository.findById();
+    }
+
     public List<SoftwareEngineer> getAllSoftwareEngineers() {
         return softwareEngineerRepository.findAll();
     }
