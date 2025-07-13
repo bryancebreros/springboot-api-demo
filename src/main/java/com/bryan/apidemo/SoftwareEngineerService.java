@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SoftwareEngineerService {
@@ -16,8 +17,8 @@ public class SoftwareEngineerService {
         this.aiService = aiService;
     }
 
-    public static List<SoftwareEngineer> getSoftwareEngineerById(Integer id) {
-        return SoftwareEngineerRepository.findById();
+    public Optional<SoftwareEngineer> getSoftwareEngineerById(Integer id) {
+        return softwareEngineerRepository.findById(id);
     }
 
     public List<SoftwareEngineer> getAllSoftwareEngineers() {
@@ -27,7 +28,7 @@ public class SoftwareEngineerService {
     @PostMapping
     public void insertSoftwareEngineer(@RequestBody SoftwareEngineer softwareEngineer){
         String prompt = """
-                Based on the programming techstack %s that %s has given.
+                Based on the programming tech stack %s that %s has given.
                 Provide a full learning path and recommendations for this person
                 """.formatted(softwareEngineer.getTechStack(), softwareEngineer.getName());
         String chatRes = aiService.chat(prompt);

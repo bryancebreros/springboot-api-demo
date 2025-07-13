@@ -3,6 +3,7 @@ package com.bryan.apidemo;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/software-engineers")
@@ -25,7 +26,7 @@ public class SoftwareEngineerController {
     }
 
     @GetMapping("{id}")
-    public List <SoftwareEngineer> getEngineerById(@PathVariable Integer id){
-        return SoftwareEngineerService.getSoftwareEngineerById(id);
+    public Optional<SoftwareEngineer> getEngineerById(@PathVariable Integer id){
+        return softwareEngineerService.getSoftwareEngineerById(id);
     }
 }
